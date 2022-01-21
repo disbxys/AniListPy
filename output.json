@@ -1,0 +1,682 @@
+{
+    "data": {
+        "Media": {
+            "siteUrl": "https://anilist.co/anime/21856",
+            "id": 21856,
+            "idMal": 33486,
+            "title": {
+                "english": "My Hero Academia Season 2",
+                "romaji": "Boku no Hero Academia 2"
+            },
+            "coverImage": {
+                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21856-vX1n54domqjJ.png"
+            },
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21856-wtSHgeHFmzdG.jpg",
+            "description": "Taking off right after the last episode of the first season. The school is temporarily closed due to security. When U.A. restarts, it is announced that the highly anticipated School Sports Festival will soon be taking place. All classes: Hero, Support, General and Business will be participating. Tournaments all round will decide who is the top Hero in training.<br><br>(Source: Anime News Network)",
+            "favourites": 9928,
+            "popularity": 368153,
+            "genres": [
+                "Action",
+                "Adventure",
+                "Comedy"
+            ],
+            "type": "ANIME",
+            "format": "TV",
+            "episodes": 25,
+            "season": "SPRING",
+            "seasonYear": 2017,
+            "status": "FINISHED",
+            "averageScore": 81,
+            "streamingEpisodes": [
+                {
+                    "title": "Episode 1 - Izuku Midoriya: Origin",
+                    "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/25d40698c5c58c5f0ba0d2daf19745161487058772_full.jpg",
+                    "url": "http://www.crunchyroll.com/my-hero-academia/episode-1-izuku-midoriya-origin-730707",
+                    "site": "Crunchyroll"
+                },
+                {
+                    "title": "Episode 2 - What It Takes to Be a Hero",
+                    "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/e795b22bccecb71e36152fc858083e071487073390_full.jpg",
+                    "url": "http://www.crunchyroll.com/my-hero-academia/episode-2-what-it-takes-to-be-a-hero-730713",
+                    "site": "Crunchyroll"
+                },
+                {
+                    "title": "Episode 3 - Roaring Muscles",
+                    "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/94b101b1498f04980ef7d55b749d4ee91487063147_full.jpg",
+                    "url": "http://www.crunchyroll.com/my-hero-academia/episode-3-roaring-muscles-730717",
+                    "site": "Crunchyroll"
+                },
+                {
+                    "title": "Episode 4 - Start Line",
+                    "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/6e24189616325b736981ec10c4517f081487065374_full.jpg",
+                    "url": "http://www.crunchyroll.com/my-hero-academia/episode-4-start-line-730721",
+                    "site": "Crunchyroll"
+                },
+                {
+                    "title": "Episode 5 - What I Can Do for Now",
+                    "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/f09b7591f88554d0d9a202a22f0441a41487067060_full.jpg",
+                    "url": "http://www.crunchyroll.com/my-hero-academia/episode-5-what-i-can-do-for-now-730725",
+                    "site": "Crunchyroll"
+                },
+                {
+                    "title": "Episode 6 - Rage, You Damn Nerd",
+                    "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/180e533555ad3040dba95a91258752171490393067_full.jpg",
+                    "url": "http://www.crunchyroll.com/my-hero-academia/episode-6-rage-you-damn-nerd-730731",
+                    "site": "Crunchyroll"
+                },
+                {
+                    "title": "Episode 7 - Deku vs, Kacchan",
+                    "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/cfb86386f124bc98e39207712a87ea771487538378_full.jpg",
+                    "url": "http://www.crunchyroll.com/my-hero-academia/episode-7-deku-vs-kacchan-730737",
+                    "site": "Crunchyroll"
+                },
+                {
+                    "title": "Episode 8 - Bakugo's Start Line",
+                    "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/ebbd1ec1d5f3fcd9b268bdc62b9047541487072902_full.jpg",
+                    "url": "http://www.crunchyroll.com/my-hero-academia/episode-8-bakugos-start-line-730741",
+                    "site": "Crunchyroll"
+                },
+                {
+                    "title": "Episode 9 - Yeah, Just Do Your Best, Iida!",
+                    "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/cecc92af3d3302aaacb58a5ffa5e1eb41487538406_full.jpg",
+                    "url": "http://www.crunchyroll.com/my-hero-academia/episode-9-yeah-just-do-your-best-iida-730745",
+                    "site": "Crunchyroll"
+                },
+                {
+                    "title": "Episode 10 - Encounter with the Unknown",
+                    "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/68fe594e7ccc93f4e0a05e6c951de18b1487137729_full.jpg",
+                    "url": "http://www.crunchyroll.com/my-hero-academia/episode-10-encounter-with-the-unknown-730749",
+                    "site": "Crunchyroll"
+                },
+                {
+                    "title": "Episode 11 - Game Over",
+                    "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/ca8688168524660ef57ef0b0ca7044881487085099_full.jpg",
+                    "url": "http://www.crunchyroll.com/my-hero-academia/episode-11-game-over-730753",
+                    "site": "Crunchyroll"
+                },
+                {
+                    "title": "Episode 12 - All Might",
+                    "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/0fd77ae7bf41f1e2c0dd6007535ec4b61487086829_full.jpg",
+                    "url": "http://www.crunchyroll.com/my-hero-academia/episode-12-all-might-730757",
+                    "site": "Crunchyroll"
+                },
+                {
+                    "title": "Episode 13 - In Each of Our Hearts",
+                    "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/9cba059b7c633e6dc9de4d642cad14711487089591_full.jpg",
+                    "url": "http://www.crunchyroll.com/my-hero-academia/episode-13-in-each-of-our-hearts-730761",
+                    "site": "Crunchyroll"
+                }
+            ],
+            "airingSchedule": {
+                "edges": [
+                    {
+                        "id": null,
+                        "node": {
+                            "media": {
+                                "id": 21856
+                            },
+                            "episode": 1,
+                            "airingAt": 1491035400
+                        }
+                    },
+                    {
+                        "id": null,
+                        "node": {
+                            "media": {
+                                "id": 21856
+                            },
+                            "episode": 2,
+                            "airingAt": 1491640200
+                        }
+                    },
+                    {
+                        "id": null,
+                        "node": {
+                            "media": {
+                                "id": 21856
+                            },
+                            "episode": 3,
+                            "airingAt": 1492245000
+                        }
+                    },
+                    {
+                        "id": null,
+                        "node": {
+                            "media": {
+                                "id": 21856
+                            },
+                            "episode": 4,
+                            "airingAt": 1492849800
+                        }
+                    },
+                    {
+                        "id": null,
+                        "node": {
+                            "media": {
+                                "id": 21856
+                            },
+                            "episode": 5,
+                            "airingAt": 1493454600
+                        }
+                    },
+                    {
+                        "id": null,
+                        "node": {
+                            "media": {
+                                "id": 21856
+                            },
+                            "episode": 6,
+                            "airingAt": 1494059400
+                        }
+                    },
+                    {
+                        "id": null,
+                        "node": {
+                            "media": {
+                                "id": 21856
+                            },
+                            "episode": 7,
+                            "airingAt": 1494664200
+                        }
+                    },
+                    {
+                        "id": null,
+                        "node": {
+                            "media": {
+                                "id": 21856
+                            },
+                            "episode": 8,
+                            "airingAt": 1495269000
+                        }
+                    },
+                    {
+                        "id": null,
+                        "node": {
+                            "media": {
+                                "id": 21856
+                            },
+                            "episode": 9,
+                            "airingAt": 1495873800
+                        }
+                    },
+                    {
+                        "id": null,
+                        "node": {
+                            "media": {
+                                "id": 21856
+                            },
+                            "episode": 10,
+                            "airingAt": 1496478600
+                        }
+                    },
+                    {
+                        "id": null,
+                        "node": {
+                            "media": {
+                                "id": 21856
+                            },
+                            "episode": 11,
+                            "airingAt": 1497083400
+                        }
+                    },
+                    {
+                        "id": null,
+                        "node": {
+                            "media": {
+                                "id": 21856
+                            },
+                            "episode": 12,
+                            "airingAt": 1497688200
+                        }
+                    },
+                    {
+                        "id": null,
+                        "node": {
+                            "media": {
+                                "id": 21856
+                            },
+                            "episode": 13,
+                            "airingAt": 1498293000
+                        }
+                    },
+                    {
+                        "id": null,
+                        "node": {
+                            "media": {
+                                "id": 21856
+                            },
+                            "episode": 14,
+                            "airingAt": 1499502600
+                        }
+                    },
+                    {
+                        "id": null,
+                        "node": {
+                            "media": {
+                                "id": 21856
+                            },
+                            "episode": 15,
+                            "airingAt": 1500107400
+                        }
+                    },
+                    {
+                        "id": null,
+                        "node": {
+                            "media": {
+                                "id": 21856
+                            },
+                            "episode": 16,
+                            "airingAt": 1500712200
+                        }
+                    },
+                    {
+                        "id": null,
+                        "node": {
+                            "media": {
+                                "id": 21856
+                            },
+                            "episode": 17,
+                            "airingAt": 1501317000
+                        }
+                    },
+                    {
+                        "id": null,
+                        "node": {
+                            "media": {
+                                "id": 21856
+                            },
+                            "episode": 18,
+                            "airingAt": 1501921800
+                        }
+                    },
+                    {
+                        "id": null,
+                        "node": {
+                            "media": {
+                                "id": 21856
+                            },
+                            "episode": 19,
+                            "airingAt": 1502526600
+                        }
+                    },
+                    {
+                        "id": null,
+                        "node": {
+                            "media": {
+                                "id": 21856
+                            },
+                            "episode": 20,
+                            "airingAt": 1503131400
+                        }
+                    },
+                    {
+                        "id": null,
+                        "node": {
+                            "media": {
+                                "id": 21856
+                            },
+                            "episode": 21,
+                            "airingAt": 1504341000
+                        }
+                    },
+                    {
+                        "id": null,
+                        "node": {
+                            "media": {
+                                "id": 21856
+                            },
+                            "episode": 22,
+                            "airingAt": 1504945800
+                        }
+                    },
+                    {
+                        "id": null,
+                        "node": {
+                            "media": {
+                                "id": 21856
+                            },
+                            "episode": 23,
+                            "airingAt": 1505550600
+                        }
+                    },
+                    {
+                        "id": null,
+                        "node": {
+                            "media": {
+                                "id": 21856
+                            },
+                            "episode": 24,
+                            "airingAt": 1506155400
+                        }
+                    },
+                    {
+                        "id": null,
+                        "node": {
+                            "media": {
+                                "id": 21856
+                            },
+                            "episode": 25,
+                            "airingAt": 1506760200
+                        }
+                    }
+                ]
+            },
+            "trailer": {
+                "id": "tEPneR3KFK8"
+            },
+            "studios": {
+                "nodes": [
+                    {
+                        "name": "bones"
+                    },
+                    {
+                        "name": "Yomiuri TV"
+                    },
+                    {
+                        "name": "Dentsu"
+                    },
+                    {
+                        "name": "Movic"
+                    },
+                    {
+                        "name": "Sony Music Entertainment"
+                    },
+                    {
+                        "name": "Toho Company"
+                    }
+                ]
+            },
+            "tags": [
+                {
+                    "name": "Super Power"
+                },
+                {
+                    "name": "Superhero"
+                },
+                {
+                    "name": "Shounen"
+                },
+                {
+                    "name": "Primarily Teen Cast"
+                },
+                {
+                    "name": "School"
+                },
+                {
+                    "name": "Cultivation"
+                },
+                {
+                    "name": "Ensemble Cast"
+                },
+                {
+                    "name": "Male Protagonist"
+                },
+                {
+                    "name": "Urban Fantasy"
+                },
+                {
+                    "name": "Revenge"
+                },
+                {
+                    "name": "Primarily Male Cast"
+                },
+                {
+                    "name": "Tomboy"
+                },
+                {
+                    "name": "Cheerleading"
+                }
+            ],
+            "characters": {
+                "nodes": [
+                    {
+                        "image": {
+                            "large": "https://s4.anilist.co/file/anilistcdn/character/large/b88892-4YU2mgU4tWPT.png"
+                        },
+                        "siteUrl": "https://anilist.co/character/88892"
+                    },
+                    {
+                        "image": {
+                            "large": "https://s4.anilist.co/file/anilistcdn/character/large/89896-RU5UQnvLDTJN.jpg"
+                        },
+                        "siteUrl": "https://anilist.co/character/89896"
+                    },
+                    {
+                        "image": {
+                            "large": "https://s4.anilist.co/file/anilistcdn/character/large/b89895-RQ3jSEg6sbIe.jpg"
+                        },
+                        "siteUrl": "https://anilist.co/character/89895"
+                    },
+                    {
+                        "image": {
+                            "large": "https://s4.anilist.co/file/anilistcdn/character/large/122560-PL0PWasMT7ZY.jpg"
+                        },
+                        "siteUrl": "https://anilist.co/character/122560"
+                    },
+                    {
+                        "image": {
+                            "large": "https://s4.anilist.co/file/anilistcdn/character/large/125450-KLsDK0rJKKaK.jpg"
+                        },
+                        "siteUrl": "https://anilist.co/character/125450"
+                    },
+                    {
+                        "image": {
+                            "large": "https://s4.anilist.co/file/anilistcdn/character/large/b89225-XBgvUhI9naVI.png"
+                        },
+                        "siteUrl": "https://anilist.co/character/89225"
+                    },
+                    {
+                        "image": {
+                            "large": "https://s4.anilist.co/file/anilistcdn/character/large/126064-YKbuVeRYZH8R.jpg"
+                        },
+                        "siteUrl": "https://anilist.co/character/126064"
+                    },
+                    {
+                        "image": {
+                            "large": "https://s4.anilist.co/file/anilistcdn/character/large/126067-sWYuwY8rQQzK.jpg"
+                        },
+                        "siteUrl": "https://anilist.co/character/126067"
+                    },
+                    {
+                        "image": {
+                            "large": "https://s4.anilist.co/file/anilistcdn/character/large/b126158-Wix9rh7unTDQ.png"
+                        },
+                        "siteUrl": "https://anilist.co/character/126158"
+                    },
+                    {
+                        "image": {
+                            "large": "https://s4.anilist.co/file/anilistcdn/character/large/b126378-RtSEitXVus1F.jpg"
+                        },
+                        "siteUrl": "https://anilist.co/character/126378"
+                    },
+                    {
+                        "image": {
+                            "large": "https://s4.anilist.co/file/anilistcdn/character/large/b125619-pa5Ef4wqnETZ.png"
+                        },
+                        "siteUrl": "https://anilist.co/character/125619"
+                    },
+                    {
+                        "image": {
+                            "large": "https://s4.anilist.co/file/anilistcdn/character/large/b89222-RkcrWoTge2LL.jpg"
+                        },
+                        "siteUrl": "https://anilist.co/character/89222"
+                    },
+                    {
+                        "image": {
+                            "large": "https://s4.anilist.co/file/anilistcdn/character/large/89901-rIHLxvWRAuZB.jpg"
+                        },
+                        "siteUrl": "https://anilist.co/character/89901"
+                    },
+                    {
+                        "image": {
+                            "large": "https://s4.anilist.co/file/anilistcdn/character/large/b89241-67UJH9tYXplY.png"
+                        },
+                        "siteUrl": "https://anilist.co/character/89241"
+                    },
+                    {
+                        "image": {
+                            "large": "https://s4.anilist.co/file/anilistcdn/character/large/b89248-8QeMSMjjJ5RO.png"
+                        },
+                        "siteUrl": "https://anilist.co/character/89248"
+                    },
+                    {
+                        "image": {
+                            "large": "https://s4.anilist.co/file/anilistcdn/character/large/127042-lKuMCMkgJHlm.jpg"
+                        },
+                        "siteUrl": "https://anilist.co/character/127042"
+                    },
+                    {
+                        "image": {
+                            "large": "https://s4.anilist.co/file/anilistcdn/character/large/127043-kigkXsp4tAHU.jpg"
+                        },
+                        "siteUrl": "https://anilist.co/character/127043"
+                    },
+                    {
+                        "image": {
+                            "large": "https://s4.anilist.co/file/anilistcdn/character/large/b89247-FOgHjUjYlaFA.jpg"
+                        },
+                        "siteUrl": "https://anilist.co/character/89247"
+                    },
+                    {
+                        "image": {
+                            "large": "https://s4.anilist.co/file/anilistcdn/character/large/b127425-hJjrOoM3JPnG.jpg"
+                        },
+                        "siteUrl": "https://anilist.co/character/127425"
+                    },
+                    {
+                        "image": {
+                            "large": "https://s4.anilist.co/file/anilistcdn/character/large/127427-Q4hmxWzkDQvJ.jpg"
+                        },
+                        "siteUrl": "https://anilist.co/character/127427"
+                    },
+                    {
+                        "image": {
+                            "large": "https://s4.anilist.co/file/anilistcdn/character/large/127428-CRQhdmFk9I8a.jpg"
+                        },
+                        "siteUrl": "https://anilist.co/character/127428"
+                    },
+                    {
+                        "image": {
+                            "large": "https://s4.anilist.co/file/anilistcdn/character/large/89900-ZQD3XKWGv1f3.jpg"
+                        },
+                        "siteUrl": "https://anilist.co/character/89900"
+                    },
+                    {
+                        "image": {
+                            "large": "https://s4.anilist.co/file/anilistcdn/character/large/b89220-AuWlCcZ8fy4l.png"
+                        },
+                        "siteUrl": "https://anilist.co/character/89220"
+                    },
+                    {
+                        "image": {
+                            "large": "https://s4.anilist.co/file/anilistcdn/character/large/b89028-UlMgShccGeDk.png"
+                        },
+                        "siteUrl": "https://anilist.co/character/89028"
+                    },
+                    {
+                        "image": {
+                            "large": "https://s4.anilist.co/file/anilistcdn/character/large/b89223-5762vburxnlz.png"
+                        },
+                        "siteUrl": "https://anilist.co/character/89223"
+                    }
+                ]
+            },
+            "relations": {
+                "nodes": [
+                    {
+                        "coverImage": {
+                            "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx100166-pypBDoozr2u0.png"
+                        },
+                        "siteUrl": "https://anilist.co/anime/100166"
+                    },
+                    {
+                        "coverImage": {
+                            "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx85486-INqnYx8gL3eX.jpg"
+                        },
+                        "siteUrl": "https://anilist.co/manga/85486"
+                    },
+                    {
+                        "coverImage": {
+                            "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/nx21459-oZMZ7JwS5Sxq.jpg"
+                        },
+                        "siteUrl": "https://anilist.co/anime/21459"
+                    },
+                    {
+                        "coverImage": {
+                            "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b130183-YuUn6EwiozEL.jpg"
+                        },
+                        "siteUrl": "https://anilist.co/anime/130183"
+                    }
+                ]
+            },
+            "recommendations": {
+                "nodes": [
+                    {
+                        "mediaRecommendation": {
+                            "siteUrl": "https://anilist.co/anime/20",
+                            "coverImage": {
+                                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx20-E3YH5W6sz6H7.jpg"
+                            }
+                        }
+                    },
+                    {
+                        "mediaRecommendation": {
+                            "siteUrl": "https://anilist.co/anime/104276",
+                            "coverImage": {
+                                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx104276-15QaWk5qbBku.jpg"
+                            }
+                        }
+                    },
+                    {
+                        "mediaRecommendation": {
+                            "siteUrl": "https://anilist.co/anime/97668",
+                            "coverImage": {
+                                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx97668-TAGeFfzxXKnB.jpg"
+                            }
+                        }
+                    },
+                    {
+                        "mediaRecommendation": {
+                            "siteUrl": "https://anilist.co/anime/21518",
+                            "coverImage": {
+                                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21518-uBqzDGIuSxJ5.jpg"
+                            }
+                        }
+                    },
+                    {
+                        "mediaRecommendation": {
+                            "siteUrl": "https://anilist.co/anime/21087",
+                            "coverImage": {
+                                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21087-8WpMBeqsSVx8.png"
+                            }
+                        }
+                    },
+                    {
+                        "mediaRecommendation": {
+                            "siteUrl": "https://anilist.co/anime/9941",
+                            "coverImage": {
+                                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx9941-WJjZDH1LFjlo.jpg"
+                            }
+                        }
+                    },
+                    {
+                        "mediaRecommendation": {
+                            "siteUrl": "https://anilist.co/anime/269",
+                            "coverImage": {
+                                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx269-KxkqTIuQgJ6v.png"
+                            }
+                        }
+                    },
+                    {
+                        "mediaRecommendation": {
+                            "siteUrl": "https://anilist.co/anime/479",
+                            "coverImage": {
+                                "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx479-DEz4w5b4JO7h.jpg"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}
