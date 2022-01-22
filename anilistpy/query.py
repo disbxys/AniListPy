@@ -1,6 +1,6 @@
 
 EPISODE_NUMS = '''
-query($id: Int) {
+query ($id: Int) {
     Media(id: $id, type: ANIME) {
         streamingEpisodes {
             title
@@ -51,7 +51,7 @@ query ($username: String, $type: MediaType) {
 '''
 
 ANIME_ID = '''
-query($id: Int) {
+query ($id: Int) {
     Media(id: $id, type: ANIME) {
         siteUrl
         id
@@ -140,7 +140,7 @@ query($id: Int) {
 '''
 
 ANIME_IDMAL = '''
-query($idMal: Int) {
+query ($idMal: Int) {
     Media(idMal: $idMal, type: ANIME) {
         siteUrl
         id
@@ -229,7 +229,7 @@ query($idMal: Int) {
 '''
 
 ANIME_SEARCH = '''
-query($search: String) {
+query ($search: String) {
     Media(search: $search, type: ANIME) {
         siteUrl
         id
@@ -315,7 +315,7 @@ query($search: String) {
 '''
 
 MANGA_ID = '''
-query($id: Int) {
+query ($id: Int) {
     Media (id: $id, type: MANGA) {
         siteUrl
         id
@@ -448,7 +448,7 @@ query($id: Int) {
 '''
 
 MANGA_IDMAL = '''
-query($idMal: Int) {
+query ($idMal: Int) {
     Media (idMal: $idMal, type: MANGA) {
         siteUrl
         id
@@ -581,7 +581,7 @@ query($idMal: Int) {
 '''
 
 MANGA_SEARCH = '''
-query($search: String) {
+query ($search: String) {
     Media (search: $search, type: MANGA) {
         siteUrl
         id
@@ -708,6 +708,25 @@ query($search: String) {
                     }
                 }
             }
+        }
+    }
+}
+'''
+
+MEDIA_PAGE_LIST = '''
+query ($page: Int, $type: MediaType) {
+    Page (page: $page, perPage: 68) {
+        media (type: $type) {
+            id
+            idMal
+            title {
+                romaji
+                english
+                native
+            }
+            status
+            format
+            siteUrl
         }
     }
 }

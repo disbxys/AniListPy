@@ -65,6 +65,15 @@ class AniList:
         req = self.send_request(al_query.ANIME_SEARCH, variables)
         return req.json()
 
+    def query_page(self, page_num:int=1, media_type:str="ANIME"):
+        variables = {
+            "page": page_num,
+            "type": media_type if media_type in ("ANIME", "MANGA") else "ANIME"
+        }
+        req = self.send_request(al_query.MEDIA_PAGE_LIST, variables)
+
+        return req.json()
+
     def send_request(self, query, variables):
         req = requests.post(
             self.api_endpoint,
