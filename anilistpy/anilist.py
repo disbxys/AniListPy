@@ -65,14 +65,29 @@ class AniList:
         req = self.send_request(al_query.ANIME_SEARCH, variables)
         return req.json()
 
-    def query_page(self, page_num:int=1, media_type:str="ANIME"):
+    def query_page(self, page_num:int=1, per_page:int=50, media_type:str="ANIME"):
         variables = {
             "page": page_num,
+            "perPage": per_page,
             "type": media_type if media_type in ("ANIME", "MANGA") else "ANIME"
         }
+        print(variables)
         req = self.send_request(al_query.MEDIA_PAGE_LIST, variables)
 
-        return req.json()
+        resp = dict(req.json())
+
+        for media in resp["data"]["Page"]["media"]:
+            # Remove manga/anime specific information from each entry
+            # if looking up anime/manga
+            if media_type == "ANIME":
+                media.pop("chapters", None)
+                media.pop("volumes", None)
+            elif media_type == "MANGA":
+                media.pop("episodes", None)
+                media.pop("season", None)
+                media.pop("seasonYear", None)
+
+        return resp
 
     def send_request(self, query, variables):
         req = requests.post(
