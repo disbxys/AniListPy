@@ -1,1 +1,1 @@
-from anilist import AniList
+from .anilist import AniList
