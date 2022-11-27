@@ -714,19 +714,155 @@ query ($search: String) {
 '''
 
 MEDIA_PAGE_LIST = '''
-query ($page: Int, $type: MediaType) {
-    Page (page: $page, perPage: 68) {
-        media (type: $type) {
+query ($page: Int, $perPage: Int, $type: MediaType){
+    Page(page: $page, perPage: $perPage) {
+        pageInfo {
+            total
+            perPage
+            currentPage
+            lastPage
+            hasNextPage
+        }
+        media(type: $type) {
             id
             idMal
+            status
+            format
+            siteUrl
             title {
                 romaji
                 english
                 native
+                userPreferred
+            }
+            coverImage {
+                extraLarge
+            }
+            startDate {
+                year
+                month
+                day
+            }
+            bannerImage
+            isAdult
+            description
+            favourites
+            popularity
+            genres
+            type
+            format
+            episodes
+            season
+            seasonYear
+            chapters
+            volumes
+            airingSchedule {
+                edges {
+                    id
+                    node {
+                        media {
+                        id
+                        }
+                        episode
+                        airingAt
+                    }
+                }
             }
             status
-            format
-            siteUrl
+            averageScore
+            tags {
+                id
+                name
+                isAdult
+                isMediaSpoiler
+                isGeneralSpoiler
+            }
+            studios {
+                nodes {
+                id
+                name
+                siteUrl
+                isAnimationStudio
+                }
+            }
+            trailer {
+                id
+                thumbnail
+                site
+            }
+            characters {
+                nodes {
+                    name {
+                        first
+                        middle
+                        last
+                        full
+                        native
+                        userPreferred
+                    }
+                    gender
+                    age
+                    dateOfBirth {
+                        year
+                        month
+                        day
+                    }
+                    image {
+                        large
+                    }
+                    siteUrl
+                }
+            }
+            staff {
+                edges {
+                    id
+                    node {
+                        name {
+                            first
+                            middle
+                            last
+                            full
+                            native
+                            userPreferred
+                        }
+                        dateOfBirth {
+                            year
+                            month
+                            day
+                        }
+                        gender
+                        description
+                        bloodType
+                        yearsActive
+                        modNotes
+                        homeTown
+                    }
+                }
+            }
+            isLicensed
+            relations {
+                nodes {
+                    coverImage {
+                        extraLarge
+                    }
+                    siteUrl
+                }
+            }
+            trailer {
+                id
+                site
+                thumbnail
+            }
+            recommendations {
+                nodes {
+                    mediaRecommendation {
+                        siteUrl
+                        coverImage {
+                            extraLarge
+                        }
+                    }
+                }
+            }
         }
     }
 }
