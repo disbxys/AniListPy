@@ -8,6 +8,9 @@ class InvalidVariableError(Exception):
     pass
 
 class AniList:
+
+    PER_PAGE = 50
+
     def __init__(self, driver=None):
         if not driver:
             self.session = driver
@@ -65,7 +68,7 @@ class AniList:
         req = self.send_request(al_query.ANIME_SEARCH, variables)
         return req.json()
 
-    def query_page(self, page_num:int=1, per_page:int=50, media_type:str="ANIME"):
+    def query_page(self, page_num:int=1, per_page:int=PER_PAGE, media_type:str="ANIME"):
         variables = {
             "page": page_num,
             "perPage": per_page,
