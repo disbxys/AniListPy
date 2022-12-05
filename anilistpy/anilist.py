@@ -75,12 +75,13 @@ class AniList:
         req = self.send_request(al_query.ANIME_SEARCH, variables)
         return req.json()
 
-    def query_page(self, page_num:int=1, per_page:int=PER_PAGE, media_type:str=AniListMediaType.anime):
+    def query_page(self, page_num:int=1, per_page:int=PER_PAGE,
+        media_type:AniListMediaType=AniListMediaType.anime):
         try:
             variables = {
                 "page": page_num,
                 "perPage": per_page,
-                "type": AniListMediaType(media_type)
+                "type": media_type.value if type(media_type)==AniListMediaType else AniListMediaType(media_type).value
             }
         except ValueError:
             raise InvalidMediaTypeError
