@@ -1,3 +1,4 @@
+from enum import Enum
 from urllib.parse import urlparse
 
 import requests
@@ -7,8 +8,14 @@ from . import query as al_query
 class InvalidVariableError(Exception):
     pass
 
-class AniList:
+class InvalidMediaTypeError(Exception):
+    pass
 
+class AniListMediaType(Enum):
+    anime = "ANIME"
+    manga = "MANGA"
+
+class AniList:
     PER_PAGE = 50
 
     def __init__(self, driver=None):
@@ -68,13 +75,16 @@ class AniList:
         req = self.send_request(al_query.ANIME_SEARCH, variables)
         return req.json()
 
-    def query_page(self, page_num:int=1, per_page:int=PER_PAGE, media_type:str="ANIME"):
-        variables = {
-            "page": page_num,
-            "perPage": per_page,
-            "type": media_type if media_type in ("ANIME", "MANGA") else "ANIME"
-        }
-        print(variables)
+    def query_page(self, page_num:int=1, per_page:int=PER_PAGE, media_type:str=AniListMediaType.anime):
+        try:
+            variables = {
+                "page": page_num,
+                "perPage": per_page,
+                "type": AniListMediaType(media_type)
+            }
+        except ValueError:
+            raise InvalidMediaTypeError
+        
         req = self.send_request(al_query.MEDIA_PAGE_LIST, variables)
 
         resp = dict(req.json())
