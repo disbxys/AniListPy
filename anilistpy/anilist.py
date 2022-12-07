@@ -20,9 +20,9 @@ class AniList:
 
     def __init__(self, driver=None):
         if not driver:
-            self.session = driver
-        else:
             self.session = requests.session()
+        else:
+            self.session = driver
 
         self.api_endpoint = "https://graphql.anilist.co"
         
