@@ -104,7 +104,7 @@ class AniList:
         return resp
 
     def send_request(self, query, variables):
-        req = requests.post(
+        req = self.session.post(
             self.api_endpoint,
             json={
                 "query": query,
