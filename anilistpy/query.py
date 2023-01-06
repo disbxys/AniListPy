@@ -714,7 +714,7 @@ query ($search: String) {
 '''
 
 MEDIA_PAGE_LIST = '''
-query ($page: Int, $perPage: Int, $type: MediaType){
+query ($page: Int, $perPage: Int, $type: MediaType) {
     Page(page: $page, perPage: $perPage) {
         pageInfo {
             total
@@ -724,71 +724,76 @@ query ($page: Int, $perPage: Int, $type: MediaType){
             hasNextPage
         }
         media(type: $type) {
+            siteUrl
             id
             idMal
-            status
-            format
-            siteUrl
             title {
-                romaji
                 english
+                romaji
                 native
                 userPreferred
             }
+            synonyms
             coverImage {
                 extraLarge
+                large
             }
+            bannerImage
+            status(version: 2)
             startDate {
                 year
                 month
                 day
             }
-            bannerImage
-            isAdult
-            description
-            favourites
-            popularity
-            genres
+            endDate {
+                year
+                month
+                day
+            }
             type
             format
             episodes
-            season
-            seasonYear
+            duration
             chapters
             volumes
-            airingSchedule {
-                edges {
-                    id
-                    node {
-                        media {
-                        id
-                        }
-                        episode
-                        airingAt
-                    }
-                }
-            }
-            status
+            season
+            seasonYear
+            description
+            isAdult
+            isLocked
+            isLicensed
+            genres
+            source(version: 3)
+            favourites
+            isFavourite
+            isRecommendationBlocked
+            isFavouriteBlocked
+            isReviewBlocked
+            popularity
+            meanScore
             averageScore
             tags {
                 id
                 name
+                description
+                rank
                 isAdult
                 isMediaSpoiler
                 isGeneralSpoiler
+                userId
             }
-            studios {
-                nodes {
-                id
-                name
-                siteUrl
-                isAnimationStudio
-                }
-            }
+            hashtag
+            countryOfOrigin
             trailer {
                 id
                 thumbnail
                 site
+            }
+            nextAiringEpisode {
+                id
+                airingAt
+                timeUntilAiring
+                episode
             }
             characters {
                 nodes {
@@ -839,31 +844,172 @@ query ($page: Int, $perPage: Int, $type: MediaType){
                     }
                 }
             }
-            isLicensed
             relations {
-                nodes {
-                    coverImage {
-                        extraLarge
-                    }
-                    siteUrl
-                }
-            }
-            trailer {
-                id
-                site
-                thumbnail
-            }
-            recommendations {
-                nodes {
-                    mediaRecommendation {
-                        siteUrl
+                edges {
+                    id
+                    relationType(version: 2)
+                    node {
+                        id
+                        idMal
+                        title {
+                            english
+                            romaji
+                            native
+                            userPreferred
+                        }
+                        format
+                        type
+                        status(version: 2)
                         coverImage {
                             extraLarge
+                            large
+                        }
+                        bannerImage
+                        siteUrl
+                    }
+                }
+            }
+            characterPreview: characters(sort: [ROLE, RELEVANCE, ID]) {
+                edges {
+                    id
+                    role
+                    name
+                    voiceActors(language: JAPANESE, sort: [RELEVANCE, ID]) {
+                        id
+                        name {
+                            full
+                            native
+                            alternative
+                            userPreferred
+                        }
+                        language: languageV2
+                        image {
+                            large
                         }
                     }
+                    node {
+                        id
+                        name {
+                            full
+                            native
+                            alternative
+                            alternativeSpoiler
+                            userPreferred
+                        }
+                        image {
+                            large
+                        }
+                    }
+                }
+            }
+            staffPreview: staff(sort: [RELEVANCE, ID]) {
+                edges {
+                    id
+                    role
+                    node {
+                        id
+                        name {
+                            full
+                            native
+                            alternative
+                            userPreferred
+                        }
+                        age
+                        gender
+                        homeTown
+                        dateOfBirth {
+                            year
+                            month
+                            day
+                        }
+                        yearsActive
+                        language: languageV2
+                        image {
+                            large
+                        }
+                        primaryOccupations
+                        isFavourite
+                        isFavouriteBlocked
+                    }
+                }
+            }
+            studios {
+                edges {
+                    isMain
+                    node {
+                        id
+                        name
+                        siteUrl
+                        isFavourite
+                        isAnimationStudio
+                    }
+                }
+            }
+            rankings {
+                id
+                rank
+                format
+                year
+                season
+                allTime
+                context
+            }
+            recommendations(sort: [RATING_DESC, ID]) {
+                nodes {
+                    id
+                    rating
+                    userRating
+                    mediaRecommendation {
+                        siteUrl
+                        id
+                        idMal
+                        title {
+                            english
+                            romaji
+                            native
+                            userPreferred
+                        }
+                        format
+                        type
+                        status(version: 2)
+                        coverImage {
+                            extraLarge
+                            large
+                        }
+                        bannerImage
+                    }
+                    user {
+                        id
+                        name
+                        avatar {
+                            large
+                        }
+                    }
+                }
+            }
+            externalLinks {
+                id
+                site
+                url
+                type
+                language
+                color
+                icon
+                notes
+                isDisabled
+            }
+            stats {
+                statusDistribution {
+                    status
+                    amount
+                }
+                scoreDistribution {
+                    score
+                    amount
                 }
             }
         }
     }
 }
+
 '''
