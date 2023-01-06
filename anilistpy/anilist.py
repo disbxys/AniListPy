@@ -97,9 +97,11 @@ class AniList:
                 media.pop("chapters", None)
                 media.pop("volumes", None)
             elif media_type == "MANGA":
+                media.pop("duration", None)
                 media.pop("episodes", None)
                 media.pop("season", None)
                 media.pop("seasonYear", None)
+                media.pop("studios", None)
 
         return resp
 
