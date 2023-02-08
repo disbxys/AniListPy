@@ -1,7 +1,7 @@
 from enum import Enum
-from urllib.parse import urlparse
 
 import requests
+from requests_ratelimiter import Duration, RequestRate, Limiter, LimiterSession
 
 from . import query as al_query
 
@@ -20,7 +20,7 @@ class AniList:
 
     def __init__(self, driver=None):
         if not driver:
-            self.session = requests.session()
+            self.session = self._create_session()
         else:
             self.session = driver
 
@@ -118,3 +118,10 @@ class AniList:
             }
         )
         return req
+
+    @staticmethod
+    def _create_session() -> LimiterSession:
+        mal_rate = RequestRate(90, Duration.MINUTE+1)
+        limiter = Limiter(mal_rate)
+        session = LimiterSession(limiter=limiter)
+        return session
