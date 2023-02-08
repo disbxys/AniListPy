@@ -28,7 +28,7 @@ class AniList:
         
         # TODO: implement way to limit requests.
 
-    def query_user(self, username, media_type="ANIME"):
+    def query_user(self, username, media_type = "ANIME"):
         variables = {
             "username": username,
             "type": media_type if media_type in ("ANIME", "MANGA") else "ANIME"
@@ -37,22 +37,22 @@ class AniList:
 
         return req.json()
 
-    def query_manga_id(self, id:int):
+    def query_manga_id(self, id: int):
         variables = { "id": id }
         req = self.send_request(al_query.MANGA_ID, variables)
         return req.json()
 
-    def query_manga_idMal(self, id:int):
+    def query_manga_idMal(self, id: int):
         variables = { "idMal": id }
         req = self.send_request(al_query.MANGA_IDMAL, variables)
         return req.json()
     
-    def query_manga_search(self, keyword:str):
+    def query_manga_search(self, keyword: str):
         variables = { "search": keyword }
         req = self.send_request(al_query.MANGA_SEARCH, variables)
         return req.json()
 
-    def query_episodes(self, id:int):
+    def query_episodes(self, id: int):
         query = al_query.episode_names
         variables = { "id": id }
 
@@ -60,23 +60,26 @@ class AniList:
 
         return req.json()
 
-    def query_anime_id(self, id:int):
+    def query_anime_id(self, id: int):
         variables = { "id": id }
         req = self.send_request(al_query.ANIME_ID, variables)
         return req.json()
 
-    def query_anime_idMal(self, id:int):
+    def query_anime_idMal(self, id: int):
         variables = { "idMal": id }
         req = self.send_request(al_query.ANIME_IDMAL, variables)
         return req.json()
     
-    def query_anime_search(self, keyword:str):
+    def query_anime_search(self, keyword: str):
         variables = { "search": keyword }
         req = self.send_request(al_query.ANIME_SEARCH, variables)
         return req.json()
 
-    def query_page(self, page_num:int=1, per_page:int=PER_PAGE,
-        media_type:AniListMediaType=AniListMediaType.anime):
+    def query_page(
+            self,
+            page_num: int = 1,
+            per_page: int = PER_PAGE,
+            media_type: AniListMediaType = AniListMediaType.anime):
         try:
             variables = {
                 "page": page_num,
