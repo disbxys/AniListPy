@@ -714,7 +714,7 @@ query ($search: String) {
 '''
 
 MEDIA_PAGE_LIST = '''
-query ($page: Int, $perPage: Int, $type: MediaType) {
+query ($page: Int, $perPage: Int, $type: MediaType, $sort: [MediaSort]) {
     Page(page: $page, perPage: $perPage) {
         pageInfo {
             total
@@ -723,7 +723,7 @@ query ($page: Int, $perPage: Int, $type: MediaType) {
             lastPage
             hasNextPage
         }
-        media(type: $type) {
+        media(type: $type, sort: $sort) {
             siteUrl
             id
             idMal

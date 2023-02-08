@@ -79,20 +79,21 @@ class AniList:
             self,
             page_num: int = 1,
             per_page: int = PER_PAGE,
-            media_type: AniListMediaType = AniListMediaType.anime):
+            media_type: AniListMediaType = AniListMediaType.anime,
+            sort_new: bool = False):
         try:
             variables = {
                 "page": page_num,
                 "perPage": per_page,
-                "type": media_type.value if type(media_type)==AniListMediaType else AniListMediaType(media_type).value
+                "type": media_type.value if type(media_type)==AniListMediaType else AniListMediaType(media_type).value,
+                "sort": "ID_DESC" if sort_new else "ID"
             }
         except ValueError:
             raise InvalidMediaTypeError
         
         req = self.send_request(al_query.MEDIA_PAGE_LIST, variables)
-
-        resp = dict(req.json())
-
+        
+        resp = req.json()
         for media in resp["data"]["Page"]["media"]:
             # Remove manga/anime specific information from each entry
             # if looking up anime/manga
