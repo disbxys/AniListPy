@@ -26,8 +26,6 @@ class AniList:
 
         self.api_endpoint = "https://graphql.anilist.co"
         
-        # TODO: implement way to limit requests.
-
     def query_user(self, username, media_type = "ANIME"):
         variables = {
             "username": username,
@@ -92,20 +90,22 @@ class AniList:
             raise InvalidMediaTypeError
         
         req = self.send_request(al_query.MEDIA_PAGE_LIST, variables)
-        
         resp = req.json()
-        for media in resp["data"]["Page"]["media"]:
-            # Remove manga/anime specific information from each entry
-            # if looking up anime/manga
-            if media_type == "ANIME":
-                media.pop("chapters", None)
-                media.pop("volumes", None)
-            elif media_type == "MANGA":
-                media.pop("duration", None)
-                media.pop("episodes", None)
-                media.pop("season", None)
-                media.pop("seasonYear", None)
-                media.pop("studios", None)
+
+        # Do not bother filtering data if error detected
+        if "errors" not in resp.keys():
+            for media in resp["data"]["Page"]["media"]:
+                # Remove manga/anime specific information from each entry
+                # if looking up anime/manga
+                if media_type == "ANIME":
+                    media.pop("chapters", None)
+                    media.pop("volumes", None)
+                elif media_type == "MANGA":
+                    media.pop("duration", None)
+                    media.pop("episodes", None)
+                    media.pop("season", None)
+                    media.pop("seasonYear", None)
+                    media.pop("studios", None)
 
         return resp
 
