@@ -4,26 +4,21 @@ from typing import Any
 import requests
 from requests_ratelimiter import Duration, RequestRate, Limiter, LimiterSession
 
-from . import query as al_query
+from anilistpy.exceptions import InvalidMediaTypeError
 
-class InvalidVariableError(Exception):
-    pass
+from anilistpy import query as al_query
 
-class InvalidMediaTypeError(Exception):
-    pass
 
 class AniListMediaType(Enum):
     anime = "ANIME"
     manga = "MANGA"
 
+
 class AniList:
     PER_PAGE = 50
 
     def __init__(self, driver: requests.Session | None = None):
-        if not driver:
-            self.session = self._create_session()
-        else:
-            self.session = driver
+        self.session = driver or self._create_session()
 
         self.api_endpoint = "https://graphql.anilist.co"
         
@@ -33,26 +28,26 @@ class AniList:
             "username": username,
             "type": media_type if media_type in ("ANIME", "MANGA") else "ANIME"
         }
-        req = self.send_request(al_query.USERDATA, variables)
+        req = self._post(al_query.USERDATA, variables)
 
         return req.json()
     
 
     def query_manga_id(self, id: int) -> dict[str, Any]:
         variables = { "id": id }
-        req = self.send_request(al_query.MANGA_ID, variables)
+        req = self._post(al_query.MANGA_ID, variables)
         return req.json()
     
 
     def query_manga_idMal(self, id: int) -> dict[str, Any]:
         variables = { "idMal": id }
-        req = self.send_request(al_query.MANGA_IDMAL, variables)
+        req = self._post(al_query.MANGA_IDMAL, variables)
         return req.json()
     
     
     def query_manga_search(self, keyword: str) -> dict[str, Any]:
         variables = { "search": keyword }
-        req = self.send_request(al_query.MANGA_SEARCH, variables)
+        req = self._post(al_query.MANGA_SEARCH, variables)
         return req.json()
         
 
@@ -60,26 +55,26 @@ class AniList:
         query = al_query.EPISODE_NUMS
         variables = { "id": id }
 
-        req = self.send_request(query, variables)
+        req = self._post(query, variables)
 
         return req.json()
     
 
     def query_anime_id(self, id: int) -> dict[str, Any]:
         variables = { "id": id }
-        req = self.send_request(al_query.ANIME_ID, variables)
+        req = self._post(al_query.ANIME_ID, variables)
         return req.json()
 
 
     def query_anime_idMal(self, id: int) -> dict[str, Any]:
         variables = { "idMal": id }
-        req = self.send_request(al_query.ANIME_IDMAL, variables)
+        req = self._post(al_query.ANIME_IDMAL, variables)
         return req.json()
     
 
     def query_anime_search(self, keyword: str) -> dict[str, Any]:
         variables = { "search": keyword }
-        req = self.send_request(al_query.ANIME_SEARCH, variables)
+        req = self._post(al_query.ANIME_SEARCH, variables)
         return req.json()
 
 
@@ -100,7 +95,7 @@ class AniList:
         except ValueError:
             raise InvalidMediaTypeError
         
-        req = self.send_request(al_query.MEDIA_PAGE_LIST, variables)
+        req = self._post(al_query.MEDIA_PAGE_LIST, variables)
         resp = req.json()
 
         # Do not bother filtering data if error detected
@@ -108,19 +103,20 @@ class AniList:
             for media in resp["data"]["Page"]["media"]:
                 # Remove manga/anime specific information from each entry
                 # if looking up anime/manga
-                if media_type == "ANIME":
-                    media.pop("chapters", None)
-                    media.pop("volumes", None)
-                elif media_type == "MANGA":
-                    media.pop("duration", None)
-                    media.pop("episodes", None)
-                    media.pop("season", None)
-                    media.pop("seasonYear", None)
-                    media.pop("studios", None)
+                match media_type:
+                    case "ANIME":
+                        media.pop("chapters", None)
+                        media.pop("volumes", None)
+                    case "MANGA":
+                        media.pop("duration", None)
+                        media.pop("episodes", None)
+                        media.pop("season", None)
+                        media.pop("seasonYear", None)
+                        media.pop("studios", None)
 
         return resp
 
-    def send_request(self, query, variables) -> requests.Response:
+    def _post(self, query, variables) -> requests.Response:
         req = self.session.post(
             self.api_endpoint,
             json={
