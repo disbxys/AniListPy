@@ -1,4 +1,5 @@
 from enum import Enum
+from typing import Any
 
 import requests
 from requests_ratelimiter import Duration, RequestRate, Limiter, LimiterSession
@@ -18,7 +19,7 @@ class AniListMediaType(Enum):
 class AniList:
     PER_PAGE = 50
 
-    def __init__(self, driver=None):
+    def __init__(self, driver: requests.Session | None = None):
         if not driver:
             self.session = self._create_session()
         else:
@@ -26,7 +27,8 @@ class AniList:
 
         self.api_endpoint = "https://graphql.anilist.co"
         
-    def query_user(self, username, media_type = "ANIME"):
+
+    def query_user(self, username, media_type = "ANIME") -> dict[str, Any]:
         variables = {
             "username": username,
             "type": media_type if media_type in ("ANIME", "MANGA") else "ANIME"
@@ -34,51 +36,60 @@ class AniList:
         req = self.send_request(al_query.USERDATA, variables)
 
         return req.json()
+    
 
-    def query_manga_id(self, id: int):
+    def query_manga_id(self, id: int) -> dict[str, Any]:
         variables = { "id": id }
         req = self.send_request(al_query.MANGA_ID, variables)
         return req.json()
+    
 
-    def query_manga_idMal(self, id: int):
+    def query_manga_idMal(self, id: int) -> dict[str, Any]:
         variables = { "idMal": id }
         req = self.send_request(al_query.MANGA_IDMAL, variables)
         return req.json()
     
-    def query_manga_search(self, keyword: str):
+    
+    def query_manga_search(self, keyword: str) -> dict[str, Any]:
         variables = { "search": keyword }
         req = self.send_request(al_query.MANGA_SEARCH, variables)
         return req.json()
+        
 
-    def query_episodes(self, id: int):
-        query = al_query.episode_names
+    def query_episodes(self, id: int) -> dict[str, Any]:
+        query = al_query.EPISODE_NUMS
         variables = { "id": id }
 
         req = self.send_request(query, variables)
 
         return req.json()
+    
 
-    def query_anime_id(self, id: int):
+    def query_anime_id(self, id: int) -> dict[str, Any]:
         variables = { "id": id }
         req = self.send_request(al_query.ANIME_ID, variables)
         return req.json()
 
-    def query_anime_idMal(self, id: int):
+
+    def query_anime_idMal(self, id: int) -> dict[str, Any]:
         variables = { "idMal": id }
         req = self.send_request(al_query.ANIME_IDMAL, variables)
         return req.json()
     
-    def query_anime_search(self, keyword: str):
+
+    def query_anime_search(self, keyword: str) -> dict[str, Any]:
         variables = { "search": keyword }
         req = self.send_request(al_query.ANIME_SEARCH, variables)
         return req.json()
+
 
     def query_page(
             self,
             page_num: int = 1,
             per_page: int = PER_PAGE,
             media_type: AniListMediaType = AniListMediaType.anime,
-            sort_new: bool = False):
+            sort_new: bool = False
+    ) -> dict[str, Any]:
         try:
             variables = {
                 "page": page_num,
@@ -109,7 +120,7 @@ class AniList:
 
         return resp
 
-    def send_request(self, query, variables):
+    def send_request(self, query, variables) -> requests.Response:
         req = self.session.post(
             self.api_endpoint,
             json={
