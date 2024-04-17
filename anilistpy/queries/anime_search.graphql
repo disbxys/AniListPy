@@ -1,0 +1,83 @@
+query ($search: String) {
+    Media(search: $search, type: ANIME) {
+        siteUrl
+        id
+        idMal
+        title {
+            english
+            romaji
+        }
+        coverImage {
+            extraLarge
+        }
+        bannerImage
+        description
+        favourites
+        popularity
+        genres
+        type
+        format
+        episodes
+        season
+        seasonYear
+        status
+        averageScore
+        streamingEpisodes {
+            title
+            thumbnail
+            url
+            site
+        }
+        airingSchedule {
+            edges {
+                id
+                node {
+                    media {
+                        id
+                    }
+                    episode
+                    airingAt
+                }
+            }
+        }
+        studios {
+            nodes {
+                name
+            }
+        }
+        tags {
+            name
+        }
+        characters {
+            nodes {
+                image {
+                    large
+                }
+                siteUrl
+            }
+        }
+        relations {
+            nodes {
+                coverImage {
+                    extraLarge
+                }
+                siteUrl
+            }
+        }
+        trailer {
+            id
+            site
+            thumbnail
+        }
+        recommendations {
+            nodes {
+                mediaRecommendation {
+                    siteUrl
+                    coverImage {
+                        extraLarge
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,12 +1,13 @@
 from enum import Enum
-from typing import Any
+import json
+from typing import Any, Mapping
 
 import requests
 from requests_ratelimiter import Duration, RequestRate, Limiter, LimiterSession
 
-from anilistpy.exceptions import InvalidMediaTypeError
+from anilistpy.exceptions import APIException, InvalidMediaTypeError
 
-from anilistpy import query as al_query
+from anilistpy.qreader import AniListQuery, read_query
 
 
 class AniListMediaType(Enum):
@@ -28,54 +29,66 @@ class AniList:
             "username": username,
             "type": media_type if media_type in ("ANIME", "MANGA") else "ANIME"
         }
-        req = self._post(al_query.USERDATA, variables)
-
-        return req.json()
+        return self._post(
+            read_query(AniListQuery.USERDATA),
+            variables
+        )
     
 
     def query_manga_id(self, id: int) -> dict[str, Any]:
         variables = { "id": id }
-        req = self._post(al_query.MANGA_ID, variables)
-        return req.json()
+        return self._post(
+            read_query(AniListQuery.MANGA_ID),
+            variables
+        )
     
 
     def query_manga_idMal(self, id: int) -> dict[str, Any]:
         variables = { "idMal": id }
-        req = self._post(al_query.MANGA_IDMAL, variables)
-        return req.json()
+        return self._post(
+            read_query(AniListQuery.MANGA_IDMAL),
+            variables
+        )
     
     
     def query_manga_search(self, keyword: str) -> dict[str, Any]:
         variables = { "search": keyword }
-        req = self._post(al_query.MANGA_SEARCH, variables)
-        return req.json()
+        return self._post(
+            read_query(AniListQuery.MANGA_SEARCH),
+            variables
+        )
         
 
     def query_episodes(self, id: int) -> dict[str, Any]:
-        query = al_query.EPISODE_NUMS
         variables = { "id": id }
-
-        req = self._post(query, variables)
-
-        return req.json()
+        return self._post(
+            read_query(AniListQuery.EPISODE_NUMS),
+            variables
+        )
     
 
     def query_anime_id(self, id: int) -> dict[str, Any]:
         variables = { "id": id }
-        req = self._post(al_query.ANIME_ID, variables)
-        return req.json()
+        return self._post(
+            read_query(AniListQuery.ANIME_ID),
+            variables
+        )
 
 
     def query_anime_idMal(self, id: int) -> dict[str, Any]:
         variables = { "idMal": id }
-        req = self._post(al_query.ANIME_IDMAL, variables)
-        return req.json()
+        return self._post(
+            read_query(AniListQuery.ANIME_IDMAL),
+            variables
+        )
     
 
     def query_anime_search(self, keyword: str) -> dict[str, Any]:
         variables = { "search": keyword }
-        req = self._post(al_query.ANIME_SEARCH, variables)
-        return req.json()
+        return self._post(
+            read_query(AniListQuery.ANIME_SEARCH),
+            variables
+        )
 
 
     def query_page(
@@ -95,36 +108,49 @@ class AniList:
         except ValueError:
             raise InvalidMediaTypeError
         
-        req = self._post(al_query.MEDIA_PAGE_LIST, variables)
-        resp = req.json()
+        return self._post(
+            read_query(AniListQuery.MEDIA_PAGE_LIST),
+            variables
+        )
+    
 
-        # Do not bother filtering data if error detected
-        if "errors" not in resp.keys():
-            for media in resp["data"]["Page"]["media"]:
-                # Remove manga/anime specific information from each entry
-                # if looking up anime/manga
-                match media_type:
-                    case "ANIME":
-                        media.pop("chapters", None)
-                        media.pop("volumes", None)
-                    case "MANGA":
-                        media.pop("duration", None)
-                        media.pop("episodes", None)
-                        media.pop("season", None)
-                        media.pop("seasonYear", None)
-                        media.pop("studios", None)
-
-        return resp
-
-    def _post(self, query, variables) -> requests.Response:
-        req = self.session.post(
+    def _post(self, query: str, variables: Mapping[str, Any]) -> dict[str, Any]:
+        response = self.session.post(
             self.api_endpoint,
             json={
                 "query": query,
                 "variables": variables
-            }
+            },
+            verify=False
         )
-        return req
+        return self._wrap_response(response, self.api_endpoint, **variables)
+    
+
+    @staticmethod
+    def _wrap_response(
+        response: requests.Response,
+        url: str,
+        **kwargs: int | str | None
+    ) -> dict[str, Any]:
+        
+        json_response: dict[str, Any] = {}
+
+        try:
+            json_response = response.json()
+            if not isinstance(json_response, dict):
+                json_response = {"data": json_response}
+
+        except json.JSONDecodeError:
+            json_response = {"error": response.text}
+
+        if response.status_code >= 400:
+            raise APIException(response.status_code, json_response, **kwargs)
+                
+        json_response["api_url"] = url
+        json_response["headers"] = dict(response.headers)
+
+        return json_response
+    
 
     @staticmethod
     def _create_session() -> LimiterSession:

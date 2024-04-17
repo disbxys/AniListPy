@@ -1,0 +1,130 @@
+query ($search: String) {
+    Media (search: $search, type: MANGA) {
+        siteUrl
+        id
+        idMal
+        title {
+            english
+            romaji
+            native
+            userPreferred
+        }
+        coverImage {
+            extraLarge
+        }
+        startDate {
+            year
+            month
+            day
+        }
+        bannerImage
+        isAdult
+        description
+        favourites
+        popularity
+        genres
+        type
+        format
+        chapters
+        volumes
+        airingSchedule {
+            edges {
+                id
+                node {
+                    media {
+                        id
+                    }
+                    episode
+                    airingAt
+                }
+            }
+        }
+        status
+        averageScore
+        tags {
+            id
+            name
+            isAdult
+            isMediaSpoiler
+            isGeneralSpoiler
+        }
+        trailer {
+            id
+            thumbnail
+            site
+        }
+        characters {
+            nodes {
+                name {
+                    first
+                    middle
+                    last
+                    full
+                    native
+                    userPreferred
+                }
+                gender
+                age
+                dateOfBirth {
+                    year
+                    month
+                    day
+                }
+                image {
+                    large
+                }
+                siteUrl
+            }
+        }
+        staff {
+            edges {
+                id
+                node {
+                    name {
+                        first
+                        middle
+                        last
+                        full
+                        native
+                        userPreferred
+                    }
+                    dateOfBirth {
+                        year
+                        month
+                        day
+                    }
+                    gender
+                    description
+                    bloodType
+                    yearsActive
+                    modNotes
+                    homeTown
+                }
+            }
+        }
+        isLicensed
+        relations {
+            nodes {
+                coverImage {
+                    extraLarge
+                }
+                siteUrl
+            }
+        }
+        trailer {
+            id
+            site
+            thumbnail
+        }
+        recommendations {
+            nodes {
+                mediaRecommendation {
+                    siteUrl
+                    coverImage {
+                        extraLarge
+                    }
+                }
+            }
+        }
+    }
+}
