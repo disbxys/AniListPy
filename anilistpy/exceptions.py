@@ -27,7 +27,15 @@ class APIException(AniListException):
         output = f"HTTP {self.status_code}"
 
         if self.error_json:
-            err_str = ", ".join(f"{k}={val}" for k, val in self.error_json.items())
+            err_list = []
+            for k, val in self.error_json.items():
+                if k == "errors":
+                    err_msgs = ", ".join(err["message"] for err in val)
+                    err_list.append(f"{k}={err_msgs}")
+                else:
+                    err_list.append(f"{k}={val}")
+
+            err_str = "; ".join(err_list)
             output += f" - {err_str}"
 
         if self.relevant_params:
