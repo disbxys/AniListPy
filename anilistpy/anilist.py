@@ -15,6 +15,16 @@ class AniListMediaType(Enum):
     manga = "MANGA"
 
 
+    @classmethod
+    def of(cls, value: str) -> "AniListMediaType":
+        value = value.strip().lower()
+        for media_type in cls:
+            if media_type.name == value:
+                return media_type
+        
+        raise InvalidMediaTypeError
+
+
 class AniList:
     PER_PAGE = 50
 
@@ -95,23 +105,42 @@ class AniList:
             self,
             page_num: int = 1,
             per_page: int = PER_PAGE,
-            media_type: AniListMediaType = AniListMediaType.anime,
+            media_type: AniListMediaType | str = AniListMediaType.anime,
             sort_new: bool = False
     ) -> dict[str, Any]:
+        if not isinstance(media_type, AniListMediaType):
+            media_type = AniListMediaType.of(media_type)
+    
         try:
             variables = {
                 "page": page_num,
                 "perPage": per_page,
-                "type": media_type.value if type(media_type)==AniListMediaType else AniListMediaType(media_type).value,
+                "type": media_type.value,
                 "sort": "ID_DESC" if sort_new else "ID"
             }
         except ValueError:
             raise InvalidMediaTypeError
         
-        return self._post(
+        response = self._post(
             read_query(AniListQuery.MEDIA_PAGE_LIST),
             variables
         )
+
+        for i in range(len(response["data"]["Page"]["media"])):
+            # Remove manga/anime specific information from each entry
+            # if looking up anime/manga
+            match media_type:
+                case AniListMediaType.anime:
+                    response["data"]["Page"]["media"][i].pop("chapters", None)
+                    response["data"]["Page"]["media"][i].pop("volumes", None)
+                case AniListMediaType.anime:
+                    response["data"]["Page"]["media"][i].pop("duration", None)
+                    response["data"]["Page"]["media"][i].pop("episodes", None)
+                    response["data"]["Page"]["media"][i].pop("season", None)
+                    response["data"]["Page"]["media"][i].pop("seasonYear", None)
+                    response["data"]["Page"]["media"][i].pop("studios", None)
+
+        return response
     
 
     def _post(self, query: str, variables: Mapping[str, Any]) -> dict[str, Any]:
