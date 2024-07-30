@@ -121,24 +121,18 @@ class AniList:
         except ValueError:
             raise InvalidMediaTypeError
         
-        response = self._post(
-            read_query(AniListQuery.MEDIA_PAGE_LIST),
-            variables
-        )
 
-        for i in range(len(response["data"]["Page"]["media"])):
-            # Remove manga/anime specific information from each entry
-            # if looking up anime/manga
-            match media_type:
-                case AniListMediaType.anime:
-                    response["data"]["Page"]["media"][i].pop("chapters", None)
-                    response["data"]["Page"]["media"][i].pop("volumes", None)
-                case AniListMediaType.anime:
-                    response["data"]["Page"]["media"][i].pop("duration", None)
-                    response["data"]["Page"]["media"][i].pop("episodes", None)
-                    response["data"]["Page"]["media"][i].pop("season", None)
-                    response["data"]["Page"]["media"][i].pop("seasonYear", None)
-                    response["data"]["Page"]["media"][i].pop("studios", None)
+        match media_type:
+            case AniListMediaType.anime:
+                response = self._post(
+                read_query(AniListQuery.ANIME_MEDIA_PAGE_LIST),
+                variables
+            )
+            case AniListMediaType.manga:
+                response = self._post(
+                read_query(AniListQuery.MANGA_MEDIA_PAGE_LIST),
+                variables
+            )
 
         return response
     
