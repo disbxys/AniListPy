@@ -2,6 +2,6 @@ certifi==2024.2.2
 charset-normalizer==3.3.2
 idna==3.7
 pyrate-limiter==2.10.0
-requests==2.31.0
+requests==2.32.2
 requests-ratelimiter==0.6.0
 urllib3==2.2.1
