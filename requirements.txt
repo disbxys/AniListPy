@@ -4,4 +4,4 @@ idna==3.7
 pyrate-limiter==2.10.0
 requests==2.32.2
 requests-ratelimiter==0.6.0
-urllib3==2.2.1
+urllib3==2.2.2
