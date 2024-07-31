@@ -158,10 +158,10 @@ class AniList:
                 json_response = {"data": json_response}
 
         except json.JSONDecodeError:
-            json_response = {"error": response.text}
+            json_response = {"errors": response.text}
 
-        if response.status_code >= 400:
-            raise APIException(response.status_code, json_response, **kwargs)
+        # if response.status_code >= 400:
+        #     raise APIException(response.status_code, json_response, **kwargs)
                 
         json_response["api_url"] = url
         json_response["headers"] = dict(response.headers)
