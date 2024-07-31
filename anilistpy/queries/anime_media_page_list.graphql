@@ -1,4 +1,4 @@
-query ($page: Int, $perPage: Int, $type: MediaType, $sort: [MediaSort]) {
+query ($page: Int, $perPage: Int, $sort: [MediaSort]) {
     Page(page: $page, perPage: $perPage) {
         pageInfo {
             total
@@ -69,12 +69,6 @@ query ($page: Int, $perPage: Int, $type: MediaType, $sort: [MediaSort]) {
                 id
                 thumbnail
                 site
-            }
-            nextAiringEpisode {
-                id
-                airingAt
-                timeUntilAiring
-                episode
             }
             characters {
                 nodes {
@@ -224,69 +218,6 @@ query ($page: Int, $perPage: Int, $type: MediaType, $sort: [MediaSort]) {
                         isFavourite
                         isAnimationStudio
                     }
-                }
-            }
-            rankings {
-                id
-                rank
-                format
-                year
-                season
-                allTime
-                context
-            }
-            recommendations(sort: [RATING_DESC, ID]) {
-                nodes {
-                    id
-                    rating
-                    userRating
-                    mediaRecommendation {
-                        siteUrl
-                        id
-                        idMal
-                        title {
-                            english
-                            romaji
-                            native
-                            userPreferred
-                        }
-                        format
-                        type
-                        status(version: 2)
-                        coverImage {
-                            extraLarge
-                            large
-                        }
-                        bannerImage
-                    }
-                    user {
-                        id
-                        name
-                        avatar {
-                            large
-                        }
-                    }
-                }
-            }
-            externalLinks {
-                id
-                site
-                url
-                type
-                language
-                color
-                icon
-                notes
-                isDisabled
-            }
-            stats {
-                statusDistribution {
-                    status
-                    amount
-                }
-                scoreDistribution {
-                    score
-                    amount
                 }
             }
         }
