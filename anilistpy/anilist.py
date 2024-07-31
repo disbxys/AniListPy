@@ -124,17 +124,11 @@ class AniList:
 
         match media_type:
             case AniListMediaType.anime:
-                response = self._post(
-                read_query(AniListQuery.ANIME_MEDIA_PAGE_LIST),
-                variables
-            )
+                query = AniListQuery.ANIME_MEDIA_PAGE_LIST
             case AniListMediaType.manga:
-                response = self._post(
-                read_query(AniListQuery.MANGA_MEDIA_PAGE_LIST),
-                variables
-            )
+                query = AniListQuery.MANGA_MEDIA_PAGE_LIST
 
-        return response
+        return self._post(read_query(query), variables)
     
 
     def _post(self, query: str, variables: Mapping[str, Any]) -> dict[str, Any]:
