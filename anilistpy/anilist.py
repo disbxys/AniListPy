@@ -53,6 +53,14 @@ class AniList:
         )
     
 
+    def query_manga_full_id(self, id: int) -> dict[str, Any]:
+        variables = { "id": id }
+        return self._post(
+            read_query(AniListQuery.MANGA_FULL_ID),
+            variables
+        )
+    
+
     def query_manga_idMal(self, id: int) -> dict[str, Any]:
         variables = { "idMal": id }
         return self._post(
@@ -81,6 +89,14 @@ class AniList:
         variables = { "id": id }
         return self._post(
             read_query(AniListQuery.ANIME_ID),
+            variables
+        )
+    
+
+    def query_anime_full_id(self, id: int) -> dict[str, Any]:
+        variables = { "id": id }
+        return self._post(
+            read_query(AniListQuery.ANIME_FULL_ID),
             variables
         )
 
