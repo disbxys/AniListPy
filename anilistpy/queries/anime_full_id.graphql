@@ -71,6 +71,17 @@ query ($id: Int) {
                         large
                     }
                 }
+                voiceActors {
+                    id
+                    name {
+                        first
+                        middle
+                        last
+                        full
+                        native
+                    }
+                    languageV2
+                }
             }
         }
         relations {
