@@ -7,6 +7,7 @@ ANILIST_QUERIES_DIR = os.path.join(os.path.dirname(__file__), "queries")
 
 class AniListQuery(Enum):
     ANIME_ID = "anime_id"
+    ANIME_FULL_ID = "anime_full_id"
     ANIME_IDMAL = "anime_idmal"
     ANIME_MEDIA_PAGE_LIST = "anime_media_page_list"
     ANIME_SEARCH = "anime_search"

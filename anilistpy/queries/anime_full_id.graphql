@@ -73,5 +73,32 @@ query ($id: Int) {
                 }
             }
         }
+        relations {
+            edges {
+                relationType(version: 2)
+                node {
+                    coverImage {
+                        extraLarge
+                    }
+                    id
+                    title {
+                        english
+                        romaji
+                        native
+                    }
+                    type
+                    format
+                }
+            }
+        }
+        externalLinks {
+            site
+            url
+        }
+        trailer {
+            id
+            site
+            thumbnail
+        }
     }
 }
