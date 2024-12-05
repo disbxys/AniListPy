@@ -13,6 +13,7 @@ class AniListQuery(Enum):
     ANIME_SEARCH = "anime_search"
     EPISODE_NUMS = "episode_nums"
     MANGA_ID = "manga_id"
+    MANGA_FULL_ID = "manga_full_id"
     MANGA_IDMAL = "manga_idmal"
     MANGA_MEDIA_PAGE_LIST = "manga_media_page_list"
     MANGA_SEARCH = "manga_search"
