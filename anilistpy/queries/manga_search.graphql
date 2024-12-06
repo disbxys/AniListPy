@@ -1,127 +1,84 @@
 query ($search: String) {
-    Media (search: $search, type: MANGA) {
+    Media(search: $search, type: MANGA) {
         siteUrl
+        updatedAt
         id
         idMal
         title {
             english
             romaji
             native
-            userPreferred
         }
-        coverImage {
-            extraLarge
-        }
+        synonyms
+        type
+        format
+        chapters
+        volumes
         startDate {
             year
             month
             day
         }
+        endDate {
+            year
+            month
+            day
+        }
+        status(version: 2)
+        isLicensed
+        coverImage {
+            extraLarge
+        }
         bannerImage
-        isAdult
         description
         favourites
         popularity
+        isAdult
         genres
-        type
-        format
-        chapters
-        volumes
-        airingSchedule {
-            edges {
-                id
-                node {
-                    media {
-                        id
-                    }
-                    episode
-                    airingAt
-                }
-            }
-        }
-        status
+        source(version: 3)
         averageScore
         tags {
             id
             name
             isAdult
-            isMediaSpoiler
             isGeneralSpoiler
+            isMediaSpoiler
         }
-        trailer {
-            id
-            thumbnail
-            site
-        }
-        characters {
-            nodes {
-                name {
-                    first
-                    middle
-                    last
-                    full
-                    native
-                    userPreferred
-                }
-                gender
-                age
-                dateOfBirth {
-                    year
-                    month
-                    day
-                }
-                image {
-                    large
-                }
-                siteUrl
-            }
-        }
-        staff {
+        characters(sort: [ROLE, RELEVANCE, ID]) {
             edges {
-                id
+                role
                 node {
+                    id
                     name {
                         first
                         middle
                         last
                         full
                         native
-                        userPreferred
                     }
-                    dateOfBirth {
-                        year
-                        month
-                        day
+                    image {
+                        large
                     }
-                    gender
-                    description
-                    bloodType
-                    yearsActive
-                    modNotes
-                    homeTown
                 }
             }
         }
-        isLicensed
-        relations {
-            nodes {
-                coverImage {
-                    extraLarge
-                }
-                siteUrl
-            }
-        }
-        trailer {
-            id
-            site
-            thumbnail
-        }
-        recommendations {
-            nodes {
-                mediaRecommendation {
-                    siteUrl
-                    coverImage {
-                        extraLarge
+        staff(sort: [RELEVANCE, ID]) {
+            edges {
+                id
+                role
+                node {
+                    id
+                    name {
+                        first
+                        middle
+                        last
+                        full
+                        native
+                        alternative
+                    }
+                    language: languageV2
+                    image {
+                        large
                     }
                 }
             }

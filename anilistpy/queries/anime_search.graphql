@@ -1,12 +1,32 @@
 query ($search: String) {
     Media(search: $search, type: ANIME) {
         siteUrl
+        updatedAt
         id
         idMal
         title {
             english
             romaji
+            native
         }
+        synonyms
+        type
+        format
+        episodes
+        startDate {
+            year
+            month
+            day
+        }
+        endDate {
+            year
+            month
+            day
+        }
+        season
+        seasonYear
+        status(version: 2)
+        duration
         coverImage {
             extraLarge
         }
@@ -14,67 +34,76 @@ query ($search: String) {
         description
         favourites
         popularity
+        isAdult
         genres
-        type
-        format
-        episodes
-        season
-        seasonYear
-        status
+        source(version: 3)
         averageScore
-        streamingEpisodes {
-            title
-            thumbnail
-            url
-            site
-        }
-        airingSchedule {
+        studios {
             edges {
                 id
+                isMain
                 node {
-                    media {
-                        id
-                    }
-                    episode
-                    airingAt
+                    id
+                    name
+                    siteUrl
+                    isAnimationStudio
                 }
-            }
-        }
-        studios {
-            nodes {
-                name
             }
         }
         tags {
-            name
-        }
-        characters {
-            nodes {
-                image {
-                    large
-                }
-                siteUrl
-            }
-        }
-        relations {
-            nodes {
-                coverImage {
-                    extraLarge
-                }
-                siteUrl
-            }
-        }
-        trailer {
             id
-            site
-            thumbnail
+            name
+            isAdult
+            isGeneralSpoiler
+            isMediaSpoiler
         }
-        recommendations {
-            nodes {
-                mediaRecommendation {
-                    siteUrl
-                    coverImage {
-                        extraLarge
+        characters(sort: [ROLE, RELEVANCE, ID]) {
+            edges {
+                role
+                node {
+                    id
+                    name {
+                        first
+                        middle
+                        last
+                        full
+                        native
+                    }
+                    image {
+                        large
+                    }
+                }
+                voiceActors {
+                    id
+                    name {
+                        first
+                        middle
+                        last
+                        full
+                        native
+                        userPreferred
+                    }
+                    languageV2
+                }
+            }
+        }
+        staff(sort: [RELEVANCE, ID]) {
+            edges {
+                id
+                role
+                node {
+                    id
+                    name {
+                        first
+                        middle
+                        last
+                        full
+                        native
+                        alternative
+                    }
+                    language: languageV2
+                    image {
+                        large
                     }
                 }
             }

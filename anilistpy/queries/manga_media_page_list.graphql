@@ -9,21 +9,19 @@ query ($page: Int, $perPage: Int, $sort: [MediaSort]) {
         }
         media(type: MANGA, sort: $sort) {
             siteUrl
+            updatedAt
             id
             idMal
             title {
                 english
                 romaji
                 native
-                userPreferred
             }
             synonyms
-            coverImage {
-                extraLarge
-                large
-            }
-            bannerImage
-            status(version: 2)
+            type
+            format
+            chapters
+            volumes
             startDate {
                 year
                 month
@@ -34,142 +32,37 @@ query ($page: Int, $perPage: Int, $sort: [MediaSort]) {
                 month
                 day
             }
-            type
-            format
-            episodes
-            duration
-            chapters
-            volumes
-            description
-            isAdult
-            isLocked
+            status(version: 2)
             isLicensed
+            coverImage {
+                extraLarge
+            }
+            bannerImage
+            description
+            favourites
+            popularity
+            isAdult
             genres
             source(version: 3)
-            isFavourite
-            isRecommendationBlocked
-            isFavouriteBlocked
-            isReviewBlocked
-            popularity
-            meanScore
             averageScore
             tags {
                 id
                 name
-                description
-                rank
                 isAdult
-                isMediaSpoiler
                 isGeneralSpoiler
-                userId
+                isMediaSpoiler
             }
-            hashtag
-            countryOfOrigin
-            trailer {
-                id
-                thumbnail
-                site
-            }
-            characters {
-                nodes {
-                    name {
-                        first
-                        middle
-                        last
-                        full
-                        native
-                        userPreferred
-                    }
-                    gender
-                    age
-                    dateOfBirth {
-                        year
-                        month
-                        day
-                    }
-                    image {
-                        large
-                    }
-                    siteUrl
-                }
-            }
-            staff {
+            characters(sort: [ROLE, RELEVANCE, ID]) {
                 edges {
-                    id
+                    role
                     node {
+                        id
                         name {
                             first
                             middle
                             last
                             full
                             native
-                            userPreferred
-                        }
-                        dateOfBirth {
-                            year
-                            month
-                            day
-                        }
-                        gender
-                        description
-                        bloodType
-                        yearsActive
-                        modNotes
-                        homeTown
-                    }
-                }
-            }
-            relations {
-                edges {
-                    id
-                    relationType(version: 2)
-                    node {
-                        id
-                        idMal
-                        title {
-                            english
-                            romaji
-                            native
-                            userPreferred
-                        }
-                        format
-                        type
-                        status(version: 2)
-                        coverImage {
-                            extraLarge
-                            large
-                        }
-                        bannerImage
-                        siteUrl
-                    }
-                }
-            }
-            characterPreview: characters(sort: [ROLE, RELEVANCE, ID]) {
-                edges {
-                    id
-                    role
-                    name
-                    voiceActors(language: JAPANESE, sort: [RELEVANCE, ID]) {
-                        id
-                        name {
-                            full
-                            native
-                            alternative
-                            userPreferred
-                        }
-                        language: languageV2
-                        image {
-                            large
-                        }
-                    }
-                    node {
-                        id
-                        name {
-                            full
-                            native
-                            alternative
-                            alternativeSpoiler
-                            userPreferred
                         }
                         image {
                             large
@@ -177,46 +70,24 @@ query ($page: Int, $perPage: Int, $sort: [MediaSort]) {
                     }
                 }
             }
-            staffPreview: staff(sort: [RELEVANCE, ID]) {
+            staff(sort: [RELEVANCE, ID]) {
                 edges {
                     id
                     role
                     node {
                         id
                         name {
+                            first
+                            middle
+                            last
                             full
                             native
                             alternative
-                            userPreferred
                         }
-                        age
-                        gender
-                        homeTown
-                        dateOfBirth {
-                            year
-                            month
-                            day
-                        }
-                        yearsActive
                         language: languageV2
                         image {
                             large
                         }
-                        primaryOccupations
-                        isFavourite
-                        isFavouriteBlocked
-                    }
-                }
-            }
-            studios {
-                edges {
-                    isMain
-                    node {
-                        id
-                        name
-                        siteUrl
-                        isFavourite
-                        isAnimationStudio
                     }
                 }
             }

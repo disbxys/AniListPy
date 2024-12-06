@@ -9,6 +9,7 @@ query ($id: Int) {
             romaji
             native
         }
+        synonyms
         type
         format
         episodes
@@ -44,6 +45,7 @@ query ($id: Int) {
                 node {
                     id
                     name
+                    siteUrl
                     isAnimationStudio
                 }
             }
@@ -55,7 +57,7 @@ query ($id: Int) {
             isGeneralSpoiler
             isMediaSpoiler
         }
-        characters {
+        characters(sort: [ROLE, RELEVANCE, ID]) {
             edges {
                 role
                 node {
@@ -79,8 +81,30 @@ query ($id: Int) {
                         last
                         full
                         native
+                        userPreferred
                     }
                     languageV2
+                }
+            }
+        }
+        staff(sort: [RELEVANCE, ID]) {
+            edges {
+                id
+                role
+                node {
+                    id
+                    name {
+                        first
+                        middle
+                        last
+                        full
+                        native
+                        alternative
+                    }
+                    language: languageV2
+                    image {
+                        large
+                    }
                 }
             }
         }
@@ -88,9 +112,6 @@ query ($id: Int) {
             edges {
                 relationType(version: 2)
                 node {
-                    coverImage {
-                        extraLarge
-                    }
                     id
                     title {
                         english
@@ -99,6 +120,10 @@ query ($id: Int) {
                     }
                     type
                     format
+                    coverImage {
+                        extraLarge
+                    }
+                    bannerImage
                 }
             }
         }

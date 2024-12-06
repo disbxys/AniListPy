@@ -9,6 +9,7 @@ query ($id: Int) {
             romaji
             native
         }
+        synonyms
         type
         format
         chapters
@@ -43,7 +44,7 @@ query ($id: Int) {
             isGeneralSpoiler
             isMediaSpoiler
         }
-        characters {
+        characters(sort: [ROLE, RELEVANCE, ID]) {
             edges {
                 role
                 node {
@@ -55,6 +56,27 @@ query ($id: Int) {
                         full
                         native
                     }
+                    image {
+                        large
+                    }
+                }
+            }
+        }
+        staff(sort: [RELEVANCE, ID]) {
+            edges {
+                id
+                role
+                node {
+                    id
+                    name {
+                        first
+                        middle
+                        last
+                        full
+                        native
+                        alternative
+                    }
+                    language: languageV2
                     image {
                         large
                     }
