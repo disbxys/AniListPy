@@ -147,6 +147,18 @@ class AniList:
         return self._post(read_query(query), variables)
     
 
+    def query_custom(
+            self,
+            query: str,
+            variables: Mapping[str, Any] | None
+    ) -> dict[str, Any]:
+        """Use this if you have your own query."""
+        if variables is None:
+            variables = dict()
+
+        return self._post(query, variables)
+    
+
     def _post(self, query: str, variables: Mapping[str, Any]) -> dict[str, Any]:
         response = self.session.post(
             self.api_endpoint,
