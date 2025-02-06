@@ -1,84 +1,93 @@
-query ($search: String) {
-    Media(search: $search, type: MANGA) {
-        siteUrl
-        updatedAt
-        id
-        idMal
-        title {
-            english
-            romaji
-            native
+query ($search: String, page: Int, perPage: Int) {
+    Page(page: $page, perPage: $perPage) {
+        pageInfo {
+            total
+            perPage
+            currentPage
+            lastPage
+            hasNextPage
         }
-        synonyms
-        type
-        format
-        chapters
-        volumes
-        startDate {
-            year
-            month
-            day
-        }
-        endDate {
-            year
-            month
-            day
-        }
-        status(version: 2)
-        isLicensed
-        coverImage {
-            extraLarge
-        }
-        bannerImage
-        description
-        favourites
-        popularity
-        isAdult
-        genres
-        source(version: 3)
-        averageScore
-        tags {
+        media(search: $search, type: MANGA) {
+            siteUrl
+            updatedAt
             id
-            name
+            idMal
+            title {
+                english
+                romaji
+                native
+            }
+            synonyms
+            type
+            format
+            chapters
+            volumes
+            startDate {
+                year
+                month
+                day
+            }
+            endDate {
+                year
+                month
+                day
+            }
+            status(version: 2)
+            isLicensed
+            coverImage {
+                extraLarge
+            }
+            bannerImage
+            description
+            favourites
+            popularity
             isAdult
-            isGeneralSpoiler
-            isMediaSpoiler
-        }
-        characters(sort: [ROLE, RELEVANCE, ID]) {
-            edges {
-                role
-                node {
-                    id
-                    name {
-                        first
-                        middle
-                        last
-                        full
-                        native
-                    }
-                    image {
-                        large
+            genres
+            source(version: 3)
+            averageScore
+            tags {
+                id
+                name
+                isAdult
+                isGeneralSpoiler
+                isMediaSpoiler
+            }
+            characters(sort: [ROLE, RELEVANCE, ID]) {
+                edges {
+                    role
+                    node {
+                        id
+                        name {
+                            first
+                            middle
+                            last
+                            full
+                            native
+                        }
+                        image {
+                            large
+                        }
                     }
                 }
             }
-        }
-        staff(sort: [RELEVANCE, ID]) {
-            edges {
-                id
-                role
-                node {
+            staff(sort: [RELEVANCE, ID]) {
+                edges {
                     id
-                    name {
-                        first
-                        middle
-                        last
-                        full
-                        native
-                        alternative
-                    }
-                    language: languageV2
-                    image {
-                        large
+                    role
+                    node {
+                        id
+                        name {
+                            first
+                            middle
+                            last
+                            full
+                            native
+                            alternative
+                        }
+                        language: languageV2
+                        image {
+                            large
+                        }
                     }
                 }
             }

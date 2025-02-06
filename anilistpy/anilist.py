@@ -69,8 +69,17 @@ class AniList:
         )
     
     
-    def query_manga_search(self, keyword: str) -> dict[str, Any]:
-        variables = { "search": keyword }
+    def query_manga_search(
+            self,
+            keyword: str,
+            page: int = 1,
+            per_page: int = 50
+    ) -> dict[str, Any]:
+        variables = {
+            "search": keyword,
+            "page": page,
+            "perPage": per_page
+        }
         return self._post(
             read_query(AniListQuery.MANGA_SEARCH),
             variables
@@ -109,8 +118,17 @@ class AniList:
         )
     
 
-    def query_anime_search(self, keyword: str) -> dict[str, Any]:
-        variables = { "search": keyword }
+    def query_anime_search(
+            self,
+            keyword: str,
+            page: int = 1,
+            per_page: int = 50
+    ) -> dict[str, Any]:
+        variables = {
+            "search": keyword,
+            "page": page,
+            "perPage": per_page
+        }
         return self._post(
             read_query(AniListQuery.ANIME_SEARCH),
             variables
